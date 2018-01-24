@@ -37,14 +37,14 @@ players = [
 	 	"HealthPoints": 250,
 	 	"AttackPower": 24,
 	 	"CounterAttackPower": 50
-	 }//,
-	// {
-	// 	"name": "Lord Helmet",
-	// 	"img": "./assets/images/lord-helmet.jpg",
-	// 	"HealthPoints": 200,
-	// 	"AttackPower": 20,
-	// 	"CounterAttackPower": 5
-	// },
+	 },
+	 {
+	 	"name": "LordHelmet",
+	 	"img": "./assets/images/lord-helmet.jpg",
+	 	"HealthPoints": 210,
+	 	"AttackPower": 20,
+	 	"CounterAttackPower": 20
+	 }
 	// {
 	// 	"name": "Jabba",
 	// 	"img": "./assets/images/jabba.jpg",
@@ -229,13 +229,4 @@ function winning(){
 
 }
 
-
-
-
-
-// - replay match
-// - repeat
-
-// if my Player wins all matches 
-// - Game over - you win!
 
