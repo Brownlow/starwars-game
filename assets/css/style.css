@@ -30,6 +30,18 @@ button{
 	margin:20px;
 }
 
+.winner{
+	background-color: #18f155;
+	border:1px solid green;
+	color:#fff;
+}
+
+.loser{
+	background-color: #f76060;
+	border:1px solid red;
+	color:#fff;
+}
+
 #characters{
 	margin: 0 auto;
 	border:1px solid #fff;
@@ -48,6 +60,7 @@ button{
 
 #characters h5, #characters p, #fightScene h5{
 	color:#999;
+	font-size:16px;
 }
 
 #characters img, #fightScene img{

@@ -13,28 +13,28 @@ players = [
 	{
 		"name": "Barf",
 		"img": "./assets/images/mog.jpg",
-		"HealthPoints": 200,
-		"AttackPower": 20,
-		"CounterAttackPower": 5
+		"HealthPoints": 230,
+		"AttackPower": 14,
+		"CounterAttackPower": 16
 	},
 	{
 		"name": "Jarjar",
 		"img": "./assets/images/jarjar.jpg",
 		"HealthPoints": 200,
-		"AttackPower": 20,
-		"CounterAttackPower": 5
+		"AttackPower": 10,
+		"CounterAttackPower": 30
 	},
 	{
 		"name": "LoneStar",
 		"img": "./assets/images/hans.jpg",
 		"HealthPoints": 200,
 		"AttackPower": 20,
-		"CounterAttackPower": 5
+		"CounterAttackPower": 30
 	 },
 	 {
 	 	"name": "Yoda",
 	 	"img": "./assets/images/yoda.jpg",
-	 	"HealthPoints": 200,
+	 	"HealthPoints": 250,
 	 	"AttackPower": 24,
 	 	"CounterAttackPower": 50
 	 }//,
@@ -95,12 +95,8 @@ for (i=0; i<players.length; i++){
 	playerHouse.append(player)
 	playerHouse.append('<h5 class="card-title">' + players[i].name + '</h5>');
 	playerHouse.append('<h5 class="players-health"> Health: ' + players[i].HealthPoints + '</h5>');
-	
 
-	// player.text($(this).attr("data-name"));
-    // $(".card-title").append(player);
-
-	
+	// Add Player to characters screen
 	$("#characters").append(playerHouse);
 
 }
@@ -159,6 +155,9 @@ function choosePlayer(chosen){
 		opponentAttackPower = $(myOpponent).attr("data-attackPower");
 		opponentCounterAttackPower = $(myOpponent).attr("counterPower");
 
+		// Turn off choose player button
+		$(".hero").off("click");
+
 	}
 		
 }
@@ -170,53 +169,65 @@ $('#attackButton').on('click', function(){
 
 	// Attack Opponent
 	opponentHealth -= myAttackPower;
+
+	// Update health count in fight scene
 	$('#fightScene .' + $(myOpponent).attr("data-name") + ' .players-health').html('Health: ' + opponentHealth);
+
+	// increase attack power by base of original attack power
+	myAttackPower = parseInt(myAttackPower) + parseInt(myAttackPower);
+	
 
 	// Opponent Counter Attack
 	myHealth -= opponentAttackPower;
+
+	// Update health count in fight scene
     $('#fightScene .' + $(myPlayer).attr("data-name") + ' .players-health').html('Health: ' +  myHealth);
 
-	if(myHealth <= 0){
+    // increase attack power by base of original attack power
+    opponentAttackPower = parseInt(opponentAttackPower) + parseInt(opponentAttackPower);
 
-		// Change game text
-		$('#gameText').html('GAME OVER - YOU LOOSE');
+    // Did I win or lose
+	if(myHealth <= 0  && myHealth < opponentHealth){
 
-		// Turn of attack button
-		$("#attackButton").off("click");
+		losing();
 
-	} else if (opponentHealth <= 0){
+	} else if ( opponentHealth <= 0  && opponentHealth < myHealth) {
 
-		// Change game text
-		$('#gameText').html('YOU WIN! - SELECT NEW OPPONENT');
-
-		// turn off attack button to end game
-		$('#attackButton').off("click");
-
-		// Remove dead opponent
-		$("." + $(myOpponent).attr("data-name")).css("display", "none");
-
-		// Reset Health to 100%
-		$('#fightScene .' + $(myPlayer).attr("data-name") + ' .players-health').html('Health: ' + $(myPlayer).attr("data-healthPoints"));
-
-		opponentsKilled ++;
-
+		winning();
 	}
 
 })
 
+function losing(){
 
-// } else if(opponentsKilled > 0){
+	// Change game text
+	$('#gameText').html('<div class="loser">GAME OVER - YOU LOOSE</div>');
 
-// 		console.log(opponentsKilled);
-// 		$('#attackButton').on("click");
-// 		choosePlayer(chosen);
+	// Turn of attack button
+	$("#attackButton").off("click");
 
-// 	} else if (opponentsKilled === 3){
-		
-// 		$('#gameText').html(' ');
-// 		$("#characters").html(' ');
-// 		$('#fightScene').html('<h1>You own this Galaxy, on to the next</h1>');
+}
 
+function winning(){
+
+	// Change game text
+	$('#gameText').html('<div class="winner">YOU WIN! - SELECT NEW OPPONENT</div>');
+
+	// turn off attack button to end game
+	$('#attackButton').off("click");
+
+	// Remove dead opponent
+	$("." + $(myOpponent).attr("data-name")).css("display", "none");
+
+	// Reset Health to 100%
+	$('#fightScene .' + $(myPlayer).attr("data-name") + ' .players-health').html('Health: ' + $(myPlayer).attr("data-healthPoints"));
+
+	opponentsKilled ++;
+
+	// Turn off choose player button
+	$(".hero").on("click", function(){});
+
+}
 
 
 
