@@ -156,7 +156,7 @@ function choosePlayer(chosen){
 		opponentCounterAttackPower = $(myOpponent).attr("counterPower");
 
 		// Turn off choose player button
-		$(".hero").off("click");
+		// $(".hero").off("click");
 
 	}
 		
@@ -204,7 +204,7 @@ function losing(){
 	$('#gameText').html('<div class="loser">GAME OVER - YOU LOOSE</div>');
 
 	// Turn of attack button
-	$("#attackButton").off("click");
+	//$("#attackButton").off("click");
 
 }
 
@@ -222,11 +222,16 @@ function winning(){
 	// Reset Health to 100%
 	$('#fightScene .' + $(myPlayer).attr("data-name") + ' .players-health').html('Health: ' + $(myPlayer).attr("data-healthPoints"));
 
-	opponentsKilled ++;
-
-	// Turn off choose player button
-	$(".hero").on("click", function(){});
+	resetBattle();	
 
 }
 
+function resetBattle(){
+		
+		// Turn on choose player button
+		$(".hero").on("click");
+
+		// Turn off choose player button
+		$("#attackButton").on("click");
+	}
 
