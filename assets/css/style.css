@@ -1,5 +1,68 @@
+body{
+	background-image: url('../images/bg2.jpg');
+	background-position: 0px 00px;
+	color:#fff;
+}
 
+h1, p{
+	width:500px;
+	margin:0 auto;
+	text-align:center;
+	margin-top:20px;
+}
+
+button{
+	    background-color: red;
+    background-image: radial-gradient( yellow, #f06d06 );
+    border: 0;
+    border-radius: 4px;
+    position: relative;
+    display: block;
+    width: 144px;
+    padding: 10px;
+    font-weight: bold;
+    margin: 0 auto;
+    margin-bottom: 30px;
+}
+
+#gameText{
+	text-align:center;
+	margin:20px;
+}
+
+#characters{
+	margin: 0 auto;
+	border:1px solid #fff;
+	background-color:rgba(255, 255, 255, .3);
+	width:1400px;
+	padding: 30px;
+	margin-bottom:40px;
+	/*height:200px;
+	overflow:scroll;*/
+}
+
+.hero{
+	display:inline-block;
+	margin-right:20px;
+}
+
+#characters h5, #characters p, #fightScene h5{
+	color:#999;
+}
 
 #characters img, #fightScene img{
 	width:200px;
 }
+
+#fightScene{
+	
+	border:1px solid #fff;
+	background-color:rgba(255, 255, 255, .3);
+	width:600px;
+	padding: 30px;
+	margin-left:20px;
+}
+
+
+
+
